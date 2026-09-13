@@ -1,0 +1,240 @@
+<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<meta name="description" content="Maximo San Antonio - Boston College 2029. Economics, credit, and special situations.">\n<title>Máximo San Antonio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  :root{
+    --paper:#F6F7F4;
+    --surface:#FFFFFF;
+    --ink:#15191A;
+    --muted:#65706B;
+    --faint:#8B9490;
+    --line:#DFE3DD;
+    --line-soft:#EAEEE8;
+    --accent:#1F5F54;
+    --ochre:#9C6A22;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1413;
+      --surface:#161C1B;
+      --ink:#E9ECE7;
+      --muted:#9AA6A1;
+      --faint:#7C8783;
+      --line:#28312F;
+      --line-soft:#1E2625;
+      --accent:#6FC0AD;
+      --ochre:#D6A257;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F1413;
+    --surface:#161C1B;
+    --ink:#E9ECE7;
+    --muted:#9AA6A1;
+    --faint:#7C8783;
+    --line:#28312F;
+    --line-soft:#1E2625;
+    --accent:#6FC0AD;
+    --ochre:#D6A257;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:Karla,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:720px;margin:0 auto;padding-block:64px 96px;padding-left:24px;padding-right:24px;display:flex;flex-direction:column;gap:64px}
+  p{margin:0;max-width:62ch}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+  a:hover{border-bottom-color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+
+  /* header */
+  header{display:flex;flex-direction:column;gap:18px}
+  h1{
+    font-family:Spectral,Georgia,serif;font-weight:600;
+    font-size:clamp(34px,7vw,50px);line-height:1.05;letter-spacing:-.015em;margin:0;text-wrap:balance;
+  }
+  .standfirst{font-family:Spectral,Georgia,serif;font-size:clamp(19px,2.6vw,22px);line-height:1.5;color:var(--ink);max-width:56ch}
+  .meta{
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:6px 14px;padding-top:4px;
+  }
+  .meta span{white-space:nowrap}
+
+  /* sections */
+  section{display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--line);padding-top:28px}
+  h2{
+    font-family:"JetBrains Mono",monospace;font-size:11.5px;font-weight:500;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent);margin:0;
+  }
+  h3{font-family:Spectral,Georgia,serif;font-size:21px;font-weight:600;margin:0;line-height:1.25;text-wrap:balance}
+  .prose{display:flex;flex-direction:column;gap:16px}
+
+  /* experience list */
+  .roles{display:flex;flex-direction:column;gap:26px}
+  .role{display:grid;grid-template-columns:112px 1fr;gap:20px;align-items:baseline}
+  .role .when{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--faint);padding-top:5px;white-space:nowrap}
+  .role .body{display:flex;flex-direction:column;gap:7px}
+  .role .where{font-weight:600;font-size:16.5px}
+  .role .what{color:var(--muted);font-size:15.5px;max-width:56ch}
+
+  /* pull quote / thesis block */
+  .thesis{
+    border-left:2px solid var(--ochre);padding:4px 0 4px 22px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .thesis p{font-family:Spectral,Georgia,serif;font-size:18.5px;line-height:1.55}
+
+  /* figures row */
+  .figures{display:flex;flex-wrap:wrap;gap:28px 40px;padding-top:6px}
+  .fig{display:flex;flex-direction:column;gap:3px}
+  .fig .n{font-family:Spectral,Georgia,serif;font-size:27px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+  .fig .l{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);max-width:22ch;line-height:1.45}
+
+  /* writing list */
+  .pieces{display:flex;flex-direction:column;gap:0}
+  .piece{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+  .piece:last-child{border-bottom:none}
+  .piece .t{flex:1;font-size:16px}
+  .piece .tag{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--faint);letter-spacing:.06em;white-space:nowrap}
+
+  /* misc list */
+  .aside{display:flex;flex-direction:column;gap:11px;color:var(--muted);font-size:16px}
+  .aside b{color:var(--ink);font-weight:600}
+
+  footer{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-direction:column;gap:10px}
+  footer .line{font-size:16px}
+  footer .fine{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--faint)}
+
+  @media (max-width:520px){
+    .page{padding-block:44px 72px;gap:48px}
+    .role{grid-template-columns:1fr;gap:4px}
+    .role .when{padding-top:0}
+  }
+</style>\n</head>\n<body>\n
+
+<div class="page">
+
+  <header>
+    <h1>Máximo San Antonio</h1>
+    <p class="standfirst">I'm a sophomore at Boston College studying economics. Mostly I'm interested in credit: how loans get made, what happens when they go bad, and who ends up taking the loss.</p>
+    <div class="meta">
+      <span>San Juan, Puerto Rico</span>
+      <span>·</span>
+      <span>Boston College, Class of 2029</span>
+      <span>·</span>
+      <span><a href="mailto:sananto@bc.edu">sananto@bc.edu</a></span>
+    </div>
+  </header>
+
+  <section>
+    <h2>How I got into this</h2>
+    <div class="prose">
+      <p>I'm from San Juan. When I was in elementary school, Puerto Rico defaulted on its debt, and what came after was the biggest municipal restructuring in US history, run by a federal oversight board created under a law called PROMESA.</p>
+      <p>I obviously didn't understand the mechanics at the time. But it was everywhere. People left, schools closed, and there was an argument about creditors running in the background of most of my childhood.</p>
+      <p>So I got interested in credit before I knew that's what it was called. Most of what I've done since has been trying to understand it properly.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What I've worked on</h2>
+    <div class="roles">
+
+      <div class="role">
+        <div class="when">Sep 2026 to now</div>
+        <div class="body">
+          <div class="where">Analyst, FulcrumLens</div>
+          <div class="what">A student-run research publication covering credit and special situations. Everything has to come from primary sources (filings, indentures, credit agreements) and gets edited before it goes out. I joined this fall.</div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="when">Summer 2026</div>
+        <div class="body">
+          <div class="where">Corporate Banking Intern, Banco Popular de Puerto Rico</div>
+          <div class="what">Spent the summer building financial spreads that Relationship Officers used when evaluating commercial credit, plus a benchmarking project comparing corporate card and treasury platforms across banks in Puerto Rico and the US. Got the team's Excellence Recognition Award at the end of it.</div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="when">Summer 2025</div>
+        <div class="body">
+          <div class="where">Intern, Office of the Resident Commissioner, U.S. House of Representatives</div>
+          <div class="what">Constituent casework and research on local policy issues affecting the district.</div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="when">2024</div>
+        <div class="body">
+          <div class="where">Intern, Department of Economic Development and Commerce, Puerto Rico</div>
+          <div class="what">Built a dashboard tracking case progress, disbursements and where things were getting stuck, and helped with case evaluations using a return-on-investment calculator.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>What I'm thinking about lately</h2>
+    <div class="prose">
+      <p>Rates have stayed higher for longer than most people expected. If you're the one lending at floating rates, that's fine, the coupons keep coming. But it's squeezing the borrowers on the other side, and a lot of that pressure doesn't show up in the headline numbers.</p>
+    </div>
+    <div class="figures">
+      <div class="fig"><span class="n">~8%</span><span class="l">of BDC investment income now coming in as PIK</span></div>
+      <div class="fig"><span class="n">~40%</span><span class="l">of private credit borrowers with negative free cash flow</span></div>
+      <div class="fig"><span class="n">&lt;2% <span style="color:var(--faint)">vs</span> ~5%</span><span class="l">headline defaults vs. the rate counting liability management</span></div>
+    </div>
+    <div class="thesis">
+      <p>My read is that the bigger risk isn't defaults. It's spreads tightening at the same time credit quality is slipping, so you get paid less for more risk while money keeps piling in.</p>
+      <p>That's why asset-based finance interests me more than direct lending right now. It's backed by collateral instead of a borrower's cash flow, and it's less crowded.</p>
+    </div>
+    <p style="color:var(--muted);font-size:15px">I might be wrong about this. It's the kind of view I'd rather get corrected on than sit on quietly.</p>
+  </section>
+
+  <section>
+    <h2>Where I'm trying to go</h2>
+    <div class="prose">
+      <p>Short version: I want to work in credit. Leveraged finance, restructuring, distressed, somewhere in that family. The part I find most interesting is what happens when a capital structure stops working and everyone has to figure out who gets paid and what the business is actually worth.</p>
+      <p>Longer term I'd like to do that work on Latin America. The region has real financing problems and not many people who understand both the market side and the place itself. I'd like to be one of them.</p>
+      <p>For now I'm recruiting for a summer 2028 analyst internship, taking econometrics and finance classes, and trying to learn as much as I can from people who are already doing the job.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Writing</h2>
+    <p style="color:var(--muted);font-size:15.5px">I write for The Buzz, the newsletter for BC's Venture Capital &amp; Private Equity Association. I picked topics I didn't fully understand yet and worked them out while writing.</p>
+    <div class="pieces">
+      <div class="piece"><span class="t">Liquidity bottlenecks in private markets</span><span class="tag">The Buzz</span></div>
+      <div class="piece"><span class="t">AI-driven disruption of SaaS</span><span class="tag">The Buzz</span></div>
+      <div class="piece"><span class="t">The growth of continuation funds</span><span class="tag">The Buzz</span></div>
+    </div>
+    <p style="color:var(--muted);font-size:15px">My first draft came back with more editor comments than sentences and I rewrote it three times. Still the most useful feedback I've gotten on anything.</p>
+  </section>
+
+  <section>
+    <h2>Other stuff</h2>
+    <div class="aside">
+      <p><b>I train MMA.</b> I'm not good at it, which is sort of the point. It's the one thing I do every week where I lose a lot.</p>
+      <p><b>I know the flags and capitals of basically every country.</b> Have since I was a kid. Has never been useful once.</p>
+      <p><b>Spanish and English, both native.</b> I grew up in San Juan and went to Colegio San Ignacio de Loyola, where I graduated as salutatorian.</p>
+      <p><b>Watches.</b> Mostly reading about them. Occasionally buying one.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p class="line">Best way to reach me is <a href="mailto:sananto@bc.edu">sananto@bc.edu</a>. Happy to talk to anyone working in credit.</p>
+    <p class="fine">Máximo San Antonio · Boston College '29 · Economics, with minors in Finance and International Studies</p>
+  </footer>
+
+</div>
+\n</body>\n</html>\n
